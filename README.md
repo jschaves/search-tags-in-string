@@ -10,6 +10,7 @@ $query->tag = 'img';
 header('Content-type: application/json');
 echo $query->ReturnData();
 
+</pre>
 //result
 0	"<img src=\"/sites/all/themes/anchor/img/twitter-top25.png\" width=\"135\" height=\"37\" border=\"0\" alt=\"Top 25 Language Twitterers 2014\">"
 1	"<img src=\"https://www.egeon.es/sites/default/files/styles/servicios/public/Fotolia_90241958_XS.jpg?itok=w7iD2dxi\" width=\"820\" height=\"193\" alt=\"hacemos en egeon\" title=\"hacemos en egeon\">"
@@ -19,5 +20,3 @@ echo $query->ReturnData();
 5	"<img alt=\"Adquiera correo electrónico para su empresa\" src=\"/sites/default/files/emails-hosting.png\" title=\"Adquiera correo electrónico para su empresa\">"
 6	"<img alt=\"demo correo electrónico para su empresa\" src=\"/sites/default/files/demo.png\" title=\"demo correo electrónico para su empresa\">"
 7	"<img src=\"/sites/all/themes/anchor/img/e-redonda15x15b.png\" alt=\"imagen e redonda\">"
-
-</pre>
