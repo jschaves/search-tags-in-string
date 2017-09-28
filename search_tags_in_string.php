@@ -18,7 +18,7 @@ class searchTagsInString {
     */
     public function ReturnData() {
 
-		return $this->_data();
+	return $this->_data();
        
     }
   
@@ -28,30 +28,28 @@ class searchTagsInString {
      */
     private function _data() {
 
-		$dom = new DOMDocument;
-		$dom->loadHTML($this->search_in);
-		
-		foreach($dom->getElementsByTagName($this->tag) as $node) {
-			
-			$array[] = $dom->saveHTML($node);
-			
-		}
+	$dom = new DOMDocument;
+	$dom->loadHTML($this->search_in);
 
-		if(count($array) > 0) {
-			
-			return json_encode($array);
-		
-		} else {
-			
-			return '[Tag not found in string]';
-			
-		}
+	foreach($dom->getElementsByTagName($this->tag) as $node) {
+
+		$array[] = $dom->saveHTML($node);
+
+	}
+
+	if(count($array) > 0) {
+
+		return json_encode($array);
+
+	} else {
+
+		return '[Tag not found in string]';
+
+	}
        
     }
        
 }
-
-
 
 //Example
 $query = new searchTagsInString();
