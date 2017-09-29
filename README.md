@@ -5,8 +5,7 @@ This class searches in the document or in a url the repeats of the chosen tag an
 //Example
 $query = new searchTagsInString();
 $query->search_in = file_get_contents('https://www.egeon.es');
-$query->tag = 'img';
-
+$query->tag = array('img');
 header('Content-type: application/json');
 echo $query->ReturnData();
 
