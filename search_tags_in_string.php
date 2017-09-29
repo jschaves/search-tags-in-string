@@ -9,7 +9,6 @@
 class searchTagsInString {
    
    public $search_in;
-   public $from;
    public $tag;
    
     /**
@@ -18,7 +17,7 @@ class searchTagsInString {
     */
     public function ReturnData() {
 
-	return $this->_data();
+		return $this->_data();
        
     }
   
@@ -28,33 +27,38 @@ class searchTagsInString {
      */
     private function _data() {
 
-	$dom = new DOMDocument;
-	$dom->loadHTML($this->search_in);
+		$dom = new DOMDocument;
+		$dom->loadHTML($this->search_in);
+		foreach($this->tag as $tag) {
+			
+			foreach($dom->getElementsByTagName($tag) as $node) {
+				
+				$array[] = $dom->saveHTML($node);
+				
+			}
+			
+		}
 
-	foreach($dom->getElementsByTagName($this->tag) as $node) {
-
-		$array[] = $dom->saveHTML($node);
-
-	}
-
-	if(count($array) > 0) {
-
-		return json_encode($array);
-
-	} else {
-
-		return '[Tag not found in string]';
-
-	}
+		if(count($array) > 0) {
+			
+			return json_encode($array);
+		
+		} else {
+			
+			return '[Tag not found in string]';
+			
+		}
        
     }
        
 }
 
+
+
 //Example
 $query = new searchTagsInString();
 $query->search_in = file_get_contents('https://www.egeon.es');
-$query->tag = 'img';
+$query->tag = array('img', 'h2');
 
 header('Content-type: application/json');
 echo $query->ReturnData();
