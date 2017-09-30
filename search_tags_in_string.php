@@ -16,7 +16,6 @@ class searchTagsInString {
      * @return Method private _data
     */
     public function ReturnData() {
-
 		return $this->_data();
        
     }
@@ -26,19 +25,17 @@ class searchTagsInString {
      * @return the result in json format.
      */
     private function _data() {
-
 		$dom = new DOMDocument;
 		$dom->loadHTML($this->search_in);
 		foreach($this->tag as $tag) {
 			
 			foreach($dom->getElementsByTagName($tag) as $node) {
 				
-				$array[] = $dom->saveHTML($node);
+				$array[$tag][] = $dom->saveHTML($node);
 				
 			}
 			
 		}
-
 		if(count($array) > 0) {
 			
 			return json_encode($array);
@@ -52,17 +49,10 @@ class searchTagsInString {
     }
        
 }
-
-
-
 //Example
 $query = new searchTagsInString();
 $query->search_in = file_get_contents('https://www.egeon.es');
 $query->tag = array('img', 'h2');
-
 header('Content-type: application/json');
 echo $query->ReturnData();
-
-
-
 ?>
